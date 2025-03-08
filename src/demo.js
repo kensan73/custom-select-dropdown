@@ -91,26 +91,26 @@ const variants = [
 
 export default function MultipleSelectCheckmarks() {
   const [variantName, setVariantName] = React.useState([
-    {
-      id: 11,
-      name: "Nintendo",
-      slug: "nintendo",
-      type: "SubMain",
-      locale: "en",
-      created_at: "2021-11-15T08:30:22.000Z",
-      updated_at: "2021-11-15T08:30:22.000Z",
-      cover: null,
-    },
-    {
-      id: 10,
-      name: "Xbox",
-      slug: "xbox",
-      type: "SubMain",
-      locale: "en",
-      created_at: "2021-11-15T08:30:08.000Z",
-      updated_at: "2021-11-15T08:30:08.000Z",
-      cover: null,
-    },
+    // {
+    //   id: 11,
+    //   name: "Nintendo",
+    //   slug: "nintendo",
+    //   type: "SubMain",
+    //   locale: "en",
+    //   created_at: "2021-11-15T08:30:22.000Z",
+    //   updated_at: "2021-11-15T08:30:22.000Z",
+    //   cover: null,
+    // },
+    // {
+    //   id: 10,
+    //   name: "Xbox",
+    //   slug: "xbox",
+    //   type: "SubMain",
+    //   locale: "en",
+    //   created_at: "2021-11-15T08:30:08.000Z",
+    //   updated_at: "2021-11-15T08:30:08.000Z",
+    //   cover: null,
+    // },
   ]);
 
   const [open, setOpen] = React.useState([true, true, true, true, true, true]);
@@ -157,7 +157,10 @@ export default function MultipleSelectCheckmarks() {
           value={variantName}
           onChange={handleChange}
           input={<OutlinedInput label='Tag' />}
-          renderValue={(selected) => selected.map((x) => x.name).join(", ")}
+          renderValue={(selected) => {
+            var result = selected.map((x) => x.name).join(", ");
+            return result;
+          }}
           MenuProps={MenuProps}
         >
           {variants.map((variant, index) => (
