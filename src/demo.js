@@ -163,7 +163,12 @@ export default function MultipleSelectCheckmarks() {
           {variants.map((variant, index) => (
             <MenuItem key={variant.id} value={variant}>
               <div>
-                <ListItemButton onClick={() => toggleThis(index)}>
+                <ListItemButton
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    return toggleThis(index);
+                  }}
+                >
                   <ListItemIcon>
                     <InboxIcon />
                   </ListItemIcon>
@@ -176,7 +181,13 @@ export default function MultipleSelectCheckmarks() {
                       <ListItemIcon>
                         <StarBorder />
                       </ListItemIcon>
-                      <Checkbox checked={variantName.indexOf(variant) > -1} />
+                      <Checkbox
+                        checked={
+                          variantName.findIndex(
+                            (item) => item.id === variant.id
+                          ) >= 0
+                        }
+                      />
                       <ListItemText primary={variant.name} />
                     </ListItemButton>
                   </List>
