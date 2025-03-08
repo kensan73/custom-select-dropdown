@@ -162,24 +162,26 @@ export default function MultipleSelectCheckmarks() {
         >
           {variants.map((variant, index) => (
             <MenuItem key={variant.id} value={variant}>
-              <ListItemButton onClick={() => toggleThis(index)}>
-                <ListItemIcon>
-                  <InboxIcon />
-                </ListItemIcon>
-                <ListItemText primary='Inbox' />
-                {isThisOpen(index) ? <ExpandLess /> : <ExpandMore />}
-              </ListItemButton>
-              <Collapse in={isThisOpen(index)} timeout='auto' unmountOnExit>
-                <List component='div' disablePadding>
-                  <ListItemButton sx={{ pl: 4 }}>
-                    <ListItemIcon>
-                      <StarBorder />
-                    </ListItemIcon>
-                    <Checkbox checked={variantName.indexOf(variant) > -1} />
-                    <ListItemText primary={variant.name} />
-                  </ListItemButton>
-                </List>
-              </Collapse>
+              <div>
+                <ListItemButton onClick={() => toggleThis(index)}>
+                  <ListItemIcon>
+                    <InboxIcon />
+                  </ListItemIcon>
+                  <ListItemText primary='Inbox' />
+                  {isThisOpen(index) ? <ExpandLess /> : <ExpandMore />}
+                </ListItemButton>
+                <Collapse in={isThisOpen(index)} timeout='auto' unmountOnExit>
+                  <List component='div' disablePadding>
+                    <ListItemButton sx={{ pl: 4 }}>
+                      <ListItemIcon>
+                        <StarBorder />
+                      </ListItemIcon>
+                      <Checkbox checked={variantName.indexOf(variant) > -1} />
+                      <ListItemText primary={variant.name} />
+                    </ListItemButton>
+                  </List>
+                </Collapse>
+              </div>
             </MenuItem>
           ))}
         </Select>
